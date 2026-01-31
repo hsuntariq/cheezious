@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include './bootstrap.php' ?>
 
+
+    <style>
+    .hide {
+        transform: translateX(-100%);
+    }
+    </style>
+
 </head>
 
 <body>
@@ -13,17 +20,36 @@
 
     <!-- underlay -->
 
-    <div class="w-100 min-vh-100 position-fixed top-0" style="background-color: rgba(0,0,0,0.5);">
-        <div class="col-6 p-5 min-vh-100 bg-white col-md-5">
+    <div class="w-100 min-vh-100  position-fixed top-0" style="background-color: rgba(0,0,0,0.5);">
+        <div class="col-6 sidebar hide p-5 min-vh-100 bg-white col-md-5 col-lg-3 col-xl-3">
             <div class="d-flex gap-4">
                 <i style="width: 50px;height:50px;border-radius:50%;"
                     class="bi bi-person d-flex justify-content-center fs-3 align-items-center bg-warning">
                 </i>
                 <div class="">
-                    <p>Login to explore</p>
-                    <h5>World of flavors</h5>
+                    <p class="my-0">Login to explore</p>
+                    <h5 class="my-0">World of flavors</h5>
                 </div>
             </div>
+            <button class="btn rounded-3 my-3 border-dark px-4 btn-outline-dark border border-2">
+                Login
+            </button>
+            <hr>
+            <ul class="list-unstyled">
+                <li class="d-flex gap-3">
+                    <i class="bi fw-bold bi-grid"></i>
+                    <h6 class="m-0">Explore Menu</h6>
+                </li>
+                <li class="d-flex gap-3 my-3">
+                    <i class="bi fw-bold  bi-shop"></i>
+                    <h6 class="m-0">Branch Locator</h6>
+                </li>
+            </ul>
+            <hr>
+            <ul class="list-unstyled">
+                <li class="fw-semibold">Blog</li>
+                <li class="fw-semibold mt-2">Privacy Policy</li>
+            </ul>
         </div>
     </div>
 
