@@ -12,3 +12,5 @@
     type="image/x-icon">
 
 <title>Cheezious</title>
+
+<link rel="stylesheet" href="./style.css">
