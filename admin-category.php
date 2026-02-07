@@ -58,7 +58,7 @@
                             <div class="card-header bg-yellow-soft border-0 px-4 py-4 rounded-top-4">
                                 <h4 class="mb-0 fw-semibold">
                                     <i class="bi bi-tags me-2 text-yellow"></i>
-                                    Add Category
+                                    Add Product
                                 </h4>
                                 <p class="text-muted small mt-1 mb-0">
                                     Organize your restaurant menu beautifully
@@ -70,10 +70,15 @@
                                     class="row g-4">
 
                                     <!-- Category Name -->
-                                    <div class="col-md-12">
-                                        <label class="form-label fw-medium">Category Name</label>
-                                        <input type="text" name="name" class="form-control form-control-lg"
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-medium">Product Name</label>
+                                        <input type="text" name="product_name" class="form-control form-control-lg"
                                             placeholder="e.g. Appetizers">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-medium">Product Price</label>
+                                        <input type="number" name="price" class="form-control form-control-lg"
+                                            placeholder="e.g. 2100">
                                     </div>
 
                                     <!-- Parent Category -->
@@ -88,7 +93,7 @@
 
                                     <!-- Category Image -->
                                     <div class="col-md-12">
-                                        <label class="form-label fw-medium">Category Image</label>
+                                        <label class="form-label fw-medium">Product Image</label>
                                         <input type="file" name="image" class="form-control form-control-lg">
                                     </div>
 
@@ -102,7 +107,7 @@
                                     <div class="col-12">
                                         <label class="form-label fw-medium">Description</label>
                                         <textarea name="desc" class="form-control" rows="4"
-                                            placeholder="Short description for this category"></textarea>
+                                            placeholder="Short description for this Product"></textarea>
                                     </div>
 
                                     <!-- Availability -->

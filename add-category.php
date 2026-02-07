@@ -1,6 +1,7 @@
 <?php 
     include './config.php';
     $name = $_POST['name'];
+    $product_name = $_POST['product_name'];
     $desc = $_POST['desc'];
     $availability = $_POST['availability'];
     $status = $_POST['status'];
@@ -17,11 +18,11 @@
 
     // move the data into the database
 
-     $insert = "INSERT INTO categories (name,image,description,availability,status,featured) VALUES ('$name','$imageName','$desc','$availability',$status,'$featured')";
+     $insert = "INSERT INTO categories (name,product_name,image,description,availability,status,featured) VALUES ('$name','$product_name','$imageName','$desc','$availability',$status,'$featured')";
 
     mysqli_query($connection,$insert);
 
-
+    header("Location: http://localhost:3000/admin-category.php")
 
 
 
