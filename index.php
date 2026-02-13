@@ -82,7 +82,7 @@
 
                 <?php 
                 include './config.php';
-                $select = "SELECT * FROM categories";
+                $select = "SELECT * FROM products";
                 $result = mysqli_query($connection,$select);
                 foreach($result as $item){
             ?>
@@ -111,6 +111,7 @@
                 }
         ?>
     </div>
+
 
 
 

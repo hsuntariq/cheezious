@@ -50,7 +50,32 @@
     <div class="row ">
         <?php include './admin-sidebar.php' ?>
         <div class="col-xl-10 col-lg-9 col-md-8 min-vh-100 bg-gray">
+            <div class="container">
+
+            </div>
             <div class="container py-5">
+                <div class="card-body col-lg-8 mx-auto my-4 px-4 py-4 bg-white">
+                    <form action="./add-category.php" enctype="multipart/form-data" method="POST" class="row g-4">
+
+                        <!-- Category Name -->
+                        <div class="col-md-12">
+                            <label class="form-label fw-medium">Category Name</label>
+                            <input type="text" name="category_name" class="form-control form-control-lg"
+                                placeholder="e.g. Appetizers">
+                            <div class="col-12 d-flex justify-content-end gap-3 pt-3">
+                                <button type="reset" class="btn btn-light px-4">
+                                    Cancel
+                                </button>
+                                <button type="submit" class="btn btn-yellow px-4 fw-semibold">
+                                    <i class="bi bi-check-circle me-1"></i>
+                                    Save Category
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
 
@@ -65,8 +90,11 @@
                                 </p>
                             </div>
 
+
+
+
                             <div class="card-body px-4 py-4 bg-white">
-                                <form action="./add-category.php" enctype="multipart/form-data" method="POST"
+                                <form action="./add-product.php" enctype="multipart/form-data" method="POST"
                                     class="row g-4">
 
                                     <!-- Category Name -->
@@ -92,9 +120,30 @@
                                     </div> -->
 
                                     <!-- Category Image -->
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <label class="form-label fw-medium">Product Image</label>
                                         <input type="file" name="image" class="form-control form-control-lg">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-medium">Product Category</label>
+                                        <select name="category_id" class="form-control form-control-lg">
+                                            <?php 
+                                                include './config.php';
+                                                $select = "SELECT * FROM categories";
+                                                $result = mysqli_query($connection,$select);
+                                                foreach($result as $item){
+                                            ?>
+
+                                            <option value="<?php echo $item['id'] ?>">
+                                                <?php echo $item['name'] ?>
+                                            </option>
+
+                                            <?php 
+                                                }
+                                            ?>
+
+
+                                        </select>
                                     </div>
 
                                     <!-- Display Order -->
