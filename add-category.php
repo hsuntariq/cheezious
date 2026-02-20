@@ -1,4 +1,4 @@
-<?php 
+<?php
     include './config.php';
     $name = $_POST['name'];
     $desc = $_POST['desc'];
@@ -7,7 +7,7 @@
     $featured = isset($_POST['featured']) ? 'on' : 'off';
     // echo $featured;
     // get image from the form
-    
+
     $imageName = $_FILES['image']['name'];
     $tmpName = $_FILES['image']['tmp_name'];
 
@@ -22,7 +22,7 @@
     mysqli_query($connection,$insert);
 
 
-
+header("Location: http://localhost:3000/admin-category.php");
 
 
 ?>

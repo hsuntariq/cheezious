@@ -1,24 +1,24 @@
 body {
-        overflow: hidden;
-    }
+  overflow-x: hidden;
+}
 
-    li {
-        transition: all 0.4s;
-    }
+li {
+  transition: all 0.4s;
+}
 
-    li:hover {
-        background-color: var(--bs-warning);
-        border-radius: 10px;
-        cursor: pointer;
-        color: white;
-    }
+li:hover {
+  background-color: var(--bs-warning);
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+}
 
-    .bg-gray{
-        background-color: #F4EDED !important;
-    }
+.bg-gray {
+  background-color: #f4eded !important;
+}
 
-    @media (max-width:768px){
-        body{
-            overflow:auto !important;
-        }
-    }
+@media (max-width: 768px) {
+  body {
+    overflow: auto !important;
+  }
+}

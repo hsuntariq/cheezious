@@ -105,6 +105,31 @@
 
 
 
+    <!-- categories -->
+
+    <div class="container row mx-auto p-5">
+
+        <?php
+        include './config.php';
+        $select = "SELECT * FROM categories";
+        $result = mysqli_query($connection,$select);
+        foreach ($result as $item) {
+            ?>
+            <div class="col-lg-3">
+                <div class="card p-3 shadow-lg">
+                    <img src="./category_images/<?php echo $item['image'] ?>" alt="">
+                    <h4 class="text-warning">
+                        <?php echo $item['name'] ?>
+                    </h4>
+                </div>
+            </div>
+
+        <?php
+        }
+        ?>
+    
+    </div>
+
 
 
 
