@@ -50,7 +50,32 @@
     <div class="row ">
         <?php include './admin-sidebar.php' ?>
         <div class="col-xl-10 col-lg-9 col-md-8 min-vh-100 bg-gray">
+            <div class="container">
+
+            </div>
             <div class="container py-5">
+                <div class="card-body col-lg-8 mx-auto my-4 px-4 py-4 bg-white">
+                    <form action="./add-category.php" enctype="multipart/form-data" method="POST" class="row g-4">
+
+                        <!-- Category Name -->
+                        <div class="col-md-12">
+                            <label class="form-label fw-medium">Category Name</label>
+                            <input type="text" name="category_name" class="form-control form-control-lg"
+                                placeholder="e.g. Appetizers">
+                            <div class="col-12 d-flex justify-content-end gap-3 pt-3">
+                                <button type="reset" class="btn btn-light px-4">
+                                    Cancel
+                                </button>
+                                <button type="submit" class="btn btn-yellow px-4 fw-semibold">
+                                    <i class="bi bi-check-circle me-1"></i>
+                                    Save Category
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
 
@@ -58,22 +83,30 @@
                             <div class="card-header bg-yellow-soft border-0 px-4 py-4 rounded-top-4">
                                 <h4 class="mb-0 fw-semibold">
                                     <i class="bi bi-tags me-2 text-yellow"></i>
-                                    Add Category
+                                    Add Product
                                 </h4>
                                 <p class="text-muted small mt-1 mb-0">
                                     Organize your restaurant menu beautifully
                                 </p>
                             </div>
 
+
+
+
                             <div class="card-body px-4 py-4 bg-white">
-                                <form action="./add-category.php" enctype="multipart/form-data" method="POST"
+                                <form action="./add-product.php" enctype="multipart/form-data" method="POST"
                                     class="row g-4">
 
                                     <!-- Category Name -->
-                                    <div class="col-md-12">
-                                        <label class="form-label fw-medium">Category Name</label>
-                                        <input type="text" name="name" class="form-control form-control-lg"
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-medium">Product Name</label>
+                                        <input type="text" name="product_name" class="form-control form-control-lg"
                                             placeholder="e.g. Appetizers">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-medium">Product Price</label>
+                                        <input type="number" name="price" class="form-control form-control-lg"
+                                            placeholder="e.g. 2100">
                                     </div>
 
                                     <!-- Parent Category -->
@@ -87,9 +120,30 @@
                                     </div> -->
 
                                     <!-- Category Image -->
-                                    <div class="col-md-12">
-                                        <label class="form-label fw-medium">Category Image</label>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-medium">Product Image</label>
                                         <input type="file" name="image" class="form-control form-control-lg">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-medium">Product Category</label>
+                                        <select name="category_id" class="form-control form-control-lg">
+                                            <?php 
+                                                include './config.php';
+                                                $select = "SELECT * FROM categories";
+                                                $result = mysqli_query($connection,$select);
+                                                foreach($result as $item){
+                                            ?>
+
+                                            <option value="<?php echo $item['id'] ?>">
+                                                <?php echo $item['name'] ?>
+                                            </option>
+
+                                            <?php 
+                                                }
+                                            ?>
+
+
+                                        </select>
                                     </div>
 
                                     <!-- Display Order -->
@@ -102,7 +156,7 @@
                                     <div class="col-12">
                                         <label class="form-label fw-medium">Description</label>
                                         <textarea name="desc" class="form-control" rows="4"
-                                            placeholder="Short description for this category"></textarea>
+                                            placeholder="Short description for this Product"></textarea>
                                     </div>
 
                                     <!-- Availability -->

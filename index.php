@@ -29,58 +29,9 @@
 
     <!-- underlay -->
 
-    <div class="w-100 min-vh-100 underlay position-fixed top-0" style="background-color: rgba(0,0,0,0.5);">
-        <div class="col-6 sidebar hide p-5 min-vh-100 bg-white col-md-5 col-xl-3 col-lg-3">
-            <div class="d-flex gap-4">
-                <i style="width: 50px;height:50px;border-radius:50%;"
-                    class="bi bi-person d-flex justify-content-center fs-3 align-items-center bg-warning">
-                </i>
-                <div class="">
-                    <p>Login to explore</p>
-                    <h5>World of flavors</h5>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="d-flex p-3 justify-content-between align-items-center">
-        <div class="d-flex gap-4 align-items-center">
-            <img src="https://cheezious.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fstack.54881ee4.png&w=256&q=75"
-                width="30px" class="menu-icon" height="30px" alt="">
-            <img class="d-none d-lg-block"
-                src="https://cheezious.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FmainLogo.c4a33b22.png&w=1200&q=75"
-                width="200px" alt="">
-        </div>
-
-        <img class="d-md-block d-lg-none"
-            src="https://cheezious.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FmainLogo.c4a33b22.png&w=1200&q=75"
-            width="200px" alt="">
-
-        <div class="d-flex gap-4 d-none d-lg-flex">
-            <button class="btn p-2 d-flex gap-1 fw-semibold btn-warning">
-                <i class="bi bi-cart"></i>
-                CART
-            </button>
-            <button class="btn p-2  d-flex gap-1 fw-semibold btn-warning">
-                <i class="bi bi-person"></i>
-                LOGIN
-            </button>
-        </div>
-        <div class="d-flex d-lg-none">
-            <button class="btn p-2 d-flex gap-1 fw-semibold ">
-                <i class="bi bi-cart fs-2 text-danger"></i>
-
-            </button>
-            <button class="btn p-2  d-flex gap-1 fw-semibold ">
-                <i class="bi bi-person fs-2 text-danger"></i>
-
-            </button>
-        </div>
-
-
-    </div>
+    <?php 
+        include './navbar.php';
+    ?>
 
 
     <!-- carousel -->
@@ -103,6 +54,63 @@
 
 
 
+
+    <!-- menu section -->
+
+
+    <div class="container p-5">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Explore Menu</h2>
+            <a href="./all-menu.php" class="text-danger text-decoration-none fs-6 fw-bold">
+                VIEW ALL
+            </a>
+        </div>
+
+        <?php 
+             include './config.php';
+                $select = "SELECT * FROM categories";
+                $result = mysqli_query($connection,$select);
+                if(mysqli_num_rows($result) > 0){
+        ?>
+
+        <div class="position-relative">
+            <i class="bi right bi-chevron-right bg-danger position-absolute d-flex justify-content-center align-items-center rounded-2 z-3 text-white"
+                style="width: 30px;height:30px;display:block;right:0px;top:50%;transform:translate(50%,-50%);cursor:pointer"></i>
+            <i class="bi left bi-chevron-left bg-danger position-absolute d-flex justify-content-center align-items-center rounded-2 z-3 text-white"
+                style="width: 30px;height:30px;display:block;left:0px;top:50%;transform:translate(-50%,-50%);cursor:pointer"></i>
+            <div class="container menu d-flex gap-4 overflow-x-scroll position-relative px-0 mx-auto py-4">
+
+                <?php 
+                include './config.php';
+                $select = "SELECT * FROM products";
+                $result = mysqli_query($connection,$select);
+                foreach($result as $item){
+            ?>
+                <div class="col-xl-3 col-lg-4 col-md-6">
+                    <div class="card text-center border-warning  ">
+                        <img src="./category_images/<?php echo $item['image'] ?>" height="200px" width="80%"
+                            class="mx-auto object-fit-cover" alt="">
+                        <h6>
+                            <?php echo $item['name'] ?>
+                        </h6>
+                    </div>
+                </div>
+
+
+                <?php 
+                }
+            ?>
+
+            </div>
+
+
+        </div>
+        <?php 
+                }else{
+                    echo "<h2 class='text-center display-3'>No Items Available</h2>";
+                }
+        ?>
+    </div>
 
 
     <!-- categories -->
@@ -140,8 +148,9 @@
     let menu_icon = document.querySelector('.menu-icon')
     let sidebar = document.querySelector('.sidebar')
     let underlay = document.querySelector('.underlay')
-
-
+    let right = document.querySelector('.right')
+    let left = document.querySelector('.left')
+    let menu = document.querySelector('.menu')
     menu_icon.addEventListener('click', () => {
         underlay.style.visibility = 'visible'
         sidebar.classList.remove('hide')
@@ -171,6 +180,21 @@
         images[count].style.opacity = '1'
         count++
     }, 2000)
+
+
+
+    right.addEventListener('click', () => {
+        menu.scrollBy({
+            left: 320,
+            behavior: 'smooth'
+        })
+    })
+    left.addEventListener('click', () => {
+        menu.scrollBy({
+            left: -320,
+            behavior: 'smooth'
+        })
+    })
     </script>
 
 
