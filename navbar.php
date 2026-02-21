@@ -1,3 +1,4 @@
+
  <div class="w-100 z-3 min-vh-100 underlay position-fixed top-0" style="background-color: rgba(0,0,0,0.5);">
      <div class="col-6 sidebar hide p-5 min-vh-100 bg-white col-md-5 col-xl-3 col-lg-3">
          <div class="d-flex gap-4">
@@ -34,7 +35,13 @@
          </button>
          <button class="btn p-2  d-flex gap-1 fw-semibold btn-warning">
              <i class="bi bi-person"></i>
-             LOGIN
+            <?php 
+                if(isset($_SESSION['token'])){
+                echo $_SESSION['token'];
+                }else{
+                echo "LOGIN";
+                }
+            ?>
          </button>
      </div>
      <div class="d-flex d-lg-none">

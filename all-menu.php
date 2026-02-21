@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,6 +51,15 @@
 <body>
 
 
+<?php
+if (isset($_SESSION['error'])) {
+    ?>
+<div class="position-fixed bg-danger top-0 right-0 px-5 py-2">
+    <h1>Hwello</h1>
+</div>
+
+<?php }?>
+
     <!-- overlay -->
 
 
@@ -60,40 +72,43 @@
                 <p class="text-center text-secondary">
                     Please enter your phone number
                 </p>
-                <form action="" class="w-100">
+                
 
-                    <div class="sign-in-container">
+                    <form action="./login.php" method="POST" class="sign-in-container w-100">
                         <div class="form-group">
-                            <label type="text" class="form-label">Email</label>
-                            <input type="text" placeholder="e.g. example@mail.com" class="form-control">
+                            <label  class="form-label">Email</label>
+                            <input name="email" type="text" placeholder="e.g. example@mail.com" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label type="text" class="form-label">Password</label>
-                            <input type="email" placeholder="******" class="form-control">
+                            <label  class="form-label">Password</label>
+                            <input name="password" type="password" placeholder="******" class="form-control">
                         </div>
-                    </div>
-                    <div class="sign-up-container d-none">
+                        <button class="btn w-100 mt-3 btn-danger">
+                            Login
+                        </button>
+                    </form>
+                    <form action="./signup.php" method="POST" class="sign-up-container w-100 d-none">
 
                         <div class="form-group">
-                            <label type="text" class="form-label">Name</label>
-                            <input type="text" placeholder="e.g. Example" class="form-control">
+                            <label  class="form-label">Name</label>
+                            <input type="text" name="name" placeholder="e.g. Example" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label type="text" class="form-label">Email</label>
-                            <input type="text" placeholder="e.g. example@mail.com" class="form-control">
+                            <label  class="form-label">Email</label>
+                            <input type="email" name="email" placeholder="e.g. example@mail.com" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label type="text" class="form-label">Password</label>
-                            <input type="email" placeholder="******" class="form-control">
+                            <label  class="form-label">Password</label>
+                            <input type="password" name="password" placeholder="******" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label type="text" class="form-label">Address</label>
-                            <input type="email" placeholder="******" class="form-control">
+                            <label  class="form-label">Address</label>
+                            <input type="text" name="address"  placeholder="Islamabad" class="form-control">
                         </div>
-                    </div>
-                    <button class="btn w-100 mt-3 btn-danger">
-                        Login
-                    </button>
+                        <button class="btn w-100 mt-3 btn-danger">
+                            Sign Up
+                        </button>
+                    </form>
                     <span class="d-block my-2 text-danger login-text fw-semibold d-none text-end ms-auto" href="">
                         Already have an account ? <span
                             class="text-decoration-none sign-in-btn text-primary fw-bold">Sign In</span>
@@ -102,7 +117,6 @@
                         New to the website ? <span class="text-decoration-none sign-up-btn text-primary fw-bold">Sign
                             Up</span>
                     </span>
-                </form>
             </div>
         </div>
     </div>
