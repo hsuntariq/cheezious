@@ -51,14 +51,95 @@ session_start();
 <body>
 
 
-<?php
-if (isset($_SESSION['error'])) {
-    ?>
-<div class="position-fixed bg-danger top-0 right-0 px-5 py-2">
-    <h1>Hwello</h1>
-</div>
 
-<?php }?>
+    <?php
+ if (isset($_SESSION['error'])) { ?>
+
+    <div id="errorAlert" class="position-fixed top-0 end-0 p-3" style="z-index: 9999;">
+
+        <div class="alert alert-danger shadow-lg rounded-4 d-flex align-items-center fade show" role="alert"
+            style="min-width: 300px; animation: slideIn 0.5s ease;">
+
+            <div class="me-3">
+                ❌
+            </div>
+
+            <div class="flex-grow-1">
+                <strong>Error!</strong><br>
+                <?php echo $_SESSION['error']; ?>
+            </div>
+
+            <button type="button" class="btn-close ms-3" data-bs-dismiss="alert"></button>
+        </div>
+    </div>
+
+    <style>
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    </style>
+
+    <?php
+    
+
+    
+    }
+    
+    unset($_SESSION['error']);
+    
+    ?>
+    <?php
+ if (isset($_SESSION['cart_success'])) { ?>
+
+    <div id="errorAlert" class="position-fixed top-0 end-0 p-3" style="z-index: 9999;">
+
+        <div class="alert alert-success shadow-lg rounded-4 d-flex align-items-center fade show" role="alert"
+            style="min-width: 300px; animation: slideIn 0.5s ease;">
+
+            <div class="me-3">
+                ✔
+            </div>
+
+            <div class="flex-grow-1">
+                <strong>Success!</strong><br>
+                <?php echo $_SESSION['cart_success']; ?>
+            </div>
+
+            <button type="button" class="btn-close ms-3" data-bs-dismiss="alert"></button>
+        </div>
+    </div>
+
+    <style>
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    </style>
+
+    <?php
+    
+
+    
+    }
+    
+    unset($_SESSION['cart_success']);
+    
+    ?>
 
     <!-- overlay -->
 
@@ -72,51 +153,51 @@ if (isset($_SESSION['error'])) {
                 <p class="text-center text-secondary">
                     Please enter your phone number
                 </p>
-                
 
-                    <form action="./login.php" method="POST" class="sign-in-container w-100">
-                        <div class="form-group">
-                            <label  class="form-label">Email</label>
-                            <input name="email" type="text" placeholder="e.g. example@mail.com" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label  class="form-label">Password</label>
-                            <input name="password" type="password" placeholder="******" class="form-control">
-                        </div>
-                        <button class="btn w-100 mt-3 btn-danger">
-                            Login
-                        </button>
-                    </form>
-                    <form action="./signup.php" method="POST" class="sign-up-container w-100 d-none">
 
-                        <div class="form-group">
-                            <label  class="form-label">Name</label>
-                            <input type="text" name="name" placeholder="e.g. Example" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label  class="form-label">Email</label>
-                            <input type="email" name="email" placeholder="e.g. example@mail.com" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label  class="form-label">Password</label>
-                            <input type="password" name="password" placeholder="******" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label  class="form-label">Address</label>
-                            <input type="text" name="address"  placeholder="Islamabad" class="form-control">
-                        </div>
-                        <button class="btn w-100 mt-3 btn-danger">
-                            Sign Up
-                        </button>
-                    </form>
-                    <span class="d-block my-2 text-danger login-text fw-semibold d-none text-end ms-auto" href="">
-                        Already have an account ? <span
-                            class="text-decoration-none sign-in-btn text-primary fw-bold">Sign In</span>
-                    </span>
-                    <span class="d-block my-2 text-danger register-text fw-semibold text-end ms-auto" href="">
-                        New to the website ? <span class="text-decoration-none sign-up-btn text-primary fw-bold">Sign
-                            Up</span>
-                    </span>
+                <form action="./login.php" method="POST" class="sign-in-container w-100">
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input name="email" type="text" placeholder="e.g. example@mail.com" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input name="password" type="password" placeholder="******" class="form-control">
+                    </div>
+                    <button class="btn w-100 mt-3 btn-danger">
+                        Login
+                    </button>
+                </form>
+                <form action="./signup.php" method="POST" class="sign-up-container w-100 d-none">
+
+                    <div class="form-group">
+                        <label class="form-label">Name</label>
+                        <input type="text" name="name" placeholder="e.g. Example" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" placeholder="e.g. example@mail.com" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password" placeholder="******" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Address</label>
+                        <input type="text" name="address" placeholder="Islamabad" class="form-control">
+                    </div>
+                    <button class="btn w-100 mt-3 btn-danger">
+                        Sign Up
+                    </button>
+                </form>
+                <span class="d-block my-2 text-danger login-text fw-semibold d-none text-end ms-auto" href="">
+                    Already have an account ? <span class="text-decoration-none sign-in-btn text-primary fw-bold">Sign
+                        In</span>
+                </span>
+                <span class="d-block my-2 text-danger register-text fw-semibold text-end ms-auto" href="">
+                    New to the website ? <span class="text-decoration-none sign-up-btn text-primary fw-bold">Sign
+                        Up</span>
+                </span>
             </div>
         </div>
     </div>
@@ -212,7 +293,22 @@ if (isset($_SESSION['error'])) {
                                 Starting price
                             </div>
                         </div>
-                        <button class="w-100 btn cart-btn btn-light shadow rounded-3 p-2 my-3">Add To Cart</button>
+                        <?php 
+                            if(isset($_SESSION['token'])){
+                        ?>
+
+                        <form action="./add-to-cart.php" method="POST">
+                            <input type="hidden" name="product_id" value="<?php echo $item2['product_id'] ?>">
+                            <button class='w-100 btn  btn-light shadow rounded-3 p-2 my-3'>Add To Cart</button>
+                        </form>
+
+                        <?php 
+                            }else{
+                                echo "<button class='w-100 btn cart-btn btn-light shadow rounded-3 p-2 my-3'>Add To Cart</button>";
+                            }
+                        ?>
+
+
                     </div>
 
 

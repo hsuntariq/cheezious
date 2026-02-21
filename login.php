@@ -13,6 +13,7 @@ $result = mysqli_query($connection, $check);
 if(mysqli_num_rows($result) > 0){
     foreach($result as $item){
         $_SESSION['token'] = $item['name'];
+        $_SESSION['user_id'] = $item['id'];
         }
 }else{
     $_SESSION['error'] = 'Invalid Credentials';

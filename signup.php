@@ -15,6 +15,7 @@ $add = "INSERT INTO users (name,email,password,address) VALUES ('$name','$email'
 mysqli_query($connection, $add);
 
 $_SESSION['token'] = $name;
+$_SESSION['user_id'] = mysqli_insert_id($connection);
 
 header("Location: $current_page");
 
