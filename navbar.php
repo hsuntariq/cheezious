@@ -36,7 +36,7 @@
                 include './config.php';
                 $count = "SELECT COUNT(id) AS total FROM cart WHERE user_id = $user_id";
                 $result = mysqli_query($connection,$count);
-                if(mysqli_num_rows($result) > 0){
+                if(mysqli_num_rows($result) > -1){
             ?>
 
             <div class="rounded-circle text-white fw-bold position-absolute d-flex justify-content-center align-items-center"

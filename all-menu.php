@@ -141,6 +141,84 @@ session_start();
     
     ?>
 
+
+
+
+
+    <!-- cart popup -->
+
+
+    <form action="./add-to-cart.php" method="POST"
+        class="min-vh-100 d-none d-flex justify-content-center cart-popup align-items-center w-100 position-fixed top-0"
+        style="background-color: rgba(0,0,0,0.5);z-index:444">
+        <div style="height:90vh;overflow-y:scroll"
+            class="card pop-form col-xl-4 col-lg-6 position-relative col-md-8 col-sm-10 col-11 rounded-md border-0 shadow">
+            <input type="hidden" name="product_id" class="product_id" value="">
+            <i class="bi bi-x-lg close-pop position-absolute text-danger pointer" style="top: 10px;right:10px"></i>
+            <img class="pop-image"
+                src="https://cheezious.com/_next/image?url=https%3A%2F%2Fs3-me-south-1.amazonaws.com%2Fcz-content-prod%2Fproducts%2F1771498357951-01%20(1).png&w=1080&q=75"
+                width="100%" alt="">
+            <div class="p-3">
+                <h5 class="mt-2 pop-name">Ramadan Deal 2</h5>
+                <p class="text-secondary text-sm">Lorem ipsum dolor sit amet.</p>
+                <div class="d-flex gap-3">
+                    <div class="px-3 text-white rounded-pill text-sm py-1 bg-danger">
+                        Starting price
+                    </div>
+                </div>
+                <div class="d-flex my-1  justify-content-between align-items-center">
+                    <h6 class="m-0">Choose Your Drink</h6>
+                    <div class="px-3 text-dark rounded-pill text-sm py-1 bg-warning">
+                        Required
+                    </div>
+                </div>
+
+                <ul class="list-unstyled d-flex gap-3 flex-column">
+                    <li class="d-flex gap-2 align-items-center">
+                        <input name="extras" style="height:20px;width:20px" type="radio" id="Rango Next"
+                            value="Rango Next">
+                        <label for="Rango Next">Rango Next</label>
+                    </li>
+                    <li class="d-flex gap-2 align-items-center">
+                        <input name="extras" style="height:20px;width:20px" type="radio" id="Cola Next"
+                            value="Cola Next">
+                        <label for="Cola Next">Cola Next</label>
+                    </li>
+                    <li class="d-flex gap-2 align-items-center">
+                        <input name="extras" style="height:20px;width:20px" type="radio" id="Dare Next"
+                            value="Dare Next">
+                        <label for="Dare Next">Dare Next</label>
+                    </li>
+                    <li class="d-flex gap-2 align-items-center">
+                        <input name="extras" style="height:20px;width:20px" type="radio" id="Fizz Next"
+                            value="Fizz Next">
+                        <label for="Fizz Next">Fizz Next</label>
+                    </li>
+                    <li class="d-flex gap-2 align-items-center">
+                        <input name="extras" style="height:20px;width:20px" type="radio" id="Roh Afza Next"
+                            value="Roh Afza Next">
+                        <label for="Roh Afza Next">Roh Afza Next</label>
+                    </li>
+                    <li class="d-flex gap-2 align-items-center">
+                        <input name="extras" style="height:20px;width:20px" type="radio" id="Jam-e-Shiree Next"
+                            value="Jam-e-Shiree Next">
+                        <label for="Jam-e-Shiree Next">Jam-e-Shiree Next</label>
+                    </li>
+                </ul>
+
+                <button class="btn-warning w-100 rounded-pill btn">
+                    Add To Cart
+                </button>
+            </div>
+        </div>
+    </form>
+
+
+
+
+
+
+
     <!-- overlay -->
 
 
@@ -298,8 +376,13 @@ session_start();
                         ?>
 
                         <form action="./add-to-cart.php" method="POST">
-                            <input type="hidden" name="product_id" value="<?php echo $item2['product_id'] ?>">
-                            <button class='w-100 btn  btn-light shadow rounded-3 p-2 my-3'>Add To Cart</button>
+
+                            <button data-image="<?php echo $item2['image'] ?>"
+                                data-product_name="<?php echo $item2['product_name'] ?>"
+                                data-id="<?php echo $item2['product_id'] ?>" type="button"
+                                class='w-100 popup-cart btn  btn-light shadow rounded-3 p-2 my-3'>Add
+                                To
+                                Cart</button>
                         </form>
 
                         <?php 
@@ -323,11 +406,43 @@ session_start();
                 }
             ?>
         </div>
-        <div style="height: 300px;top:40px;"
+        <div style="height: 400px;width:400px;top:40px;overflow-y:scroll;"
             class="bg-body-secondary position-sticky  p-4 rounded-3 d-flex justify-content-center align-items-center flex-column gap-1">
-            <img src="https://cheezious.com/_next/static/media/emptycart.e7858caa.svg" width="100px" alt="">
+            <!-- <img src="https://cheezious.com/_next/static/media/emptycart.e7858caa.svg" width="100px" alt="">
             <h5>YOUR CART IS EMPTY</h5>
-            <h6>Go ahead and explore top categories </h6>
+            <h6>Go ahead and explore top categories </h6> -->
+
+
+            <div class="d-flex w-100 gap-3 align-items-center justify-content-between text-danger fw-semibold">
+                <h5>Total</h5>
+                <h5>Rs. 3,547</h5>
+            </div>
+
+            <div class="bg-white w-100 p-4 rounded-md card border-0 shadow-lg">
+                <div class="d-flex w-100 gap-3">
+                    <img src="" alt="">
+                    <div class="w-100">
+                        <h5>Ramadan Deal 5</h5>
+                        <div class="d-flex justify-content-between text-secondary">
+                            <h5>Rango Next</h5>
+                            <h5>Rs. 0</h5>
+                        </div>
+                        <div class="text-end text-danger">
+                            Rs. 2,749
+                        </div>
+                        <div class="d-flex justify-content-end gap-1 align-items-center">
+                            <i style="height: 30px;width:30px;"
+                                class="bi rounded-circle bi-trash d-flex justify-content-center align-items-center bg-danger text-white"></i>
+                            <h6>1</h6>
+                            <i style="height: 30px;width:30px;"
+                                class="bi d-flex justify-content-center align-items-center rounded-circle bi-plus bg-warning "></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
         </div>
     </div>
 
@@ -433,6 +548,27 @@ session_start();
             left: -320,
             behavior: 'smooth'
         })
+    })
+
+
+
+    let cartPopUp = document.querySelector('.cart-popup') //oper wala
+    let popUpBtn = document.querySelectorAll('.popup-cart') // neche wala
+    let closeBtn = document.querySelector('.close-pop')
+    let popImage = document.querySelector('.pop-image')
+    let popName = document.querySelector('.pop-name')
+    let product_id = document.querySelector('.product_id')
+    popUpBtn.forEach((item, index) => {
+        item.addEventListener('click', (e) => {
+            popImage.src = `./category_images/${e.target.dataset.image}`
+            popName.innerHTML = e.target.dataset.product_name
+            product_id.value = e.target.dataset.id
+            cartPopUp.classList.remove('d-none')
+        })
+    })
+
+    closeBtn.addEventListener('click', () => {
+        cartPopUp.classList.add('d-none')
     })
     </script>
 

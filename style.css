@@ -4,17 +4,32 @@ body {
 
 li {
   transition: all 0.4s;
+  cursor: pointer !important;
 }
 
-li:hover {
+.sidebar li:hover {
   background-color: var(--bs-warning);
   border-radius: 10px;
   cursor: pointer;
   color: white;
+
 }
 
 .bg-gray {
   background-color: #f4eded !important;
+}
+
+
+.text-sm{
+  font-size: 0.8rem;
+}
+
+.pop-form::-webkit-scrollbar{
+  width: 0;
+}
+
+.pointer{
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
@@ -22,3 +37,5 @@ li:hover {
     overflow: auto !important;
   }
 }
+
+
