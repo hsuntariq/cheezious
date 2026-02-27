@@ -12,23 +12,21 @@ li {
   border-radius: 10px;
   cursor: pointer;
   color: white;
-
 }
 
 .bg-gray {
   background-color: #f4eded !important;
 }
 
-
-.text-sm{
+.text-sm {
   font-size: 0.8rem;
 }
 
-.pop-form::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 0;
 }
 
-.pointer{
+.pointer {
   cursor: pointer;
 }
 
@@ -37,5 +35,3 @@ li {
     overflow: auto !important;
   }
 }
-
-

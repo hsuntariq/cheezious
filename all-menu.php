@@ -406,29 +406,43 @@ session_start();
                 }
             ?>
         </div>
-        <div style="height: 400px;width:400px;top:40px;overflow-y:scroll;"
-            class="bg-body-secondary position-sticky  p-4 rounded-3 d-flex justify-content-center align-items-center flex-column gap-1">
-            <!-- <img src="https://cheezious.com/_next/static/media/emptycart.e7858caa.svg" width="100px" alt="">
-            <h5>YOUR CART IS EMPTY</h5>
-            <h6>Go ahead and explore top categories </h6> -->
+        <div 
+style="height:400px; width:400px; top:40px; overflow-y:auto;"
+class="bg-body-secondary position-sticky mt-3 p-3 rounded-3 d-flex flex-column gap-2">
 
 
-            <div class="d-flex w-100 gap-3 align-items-center justify-content-between text-danger fw-semibold">
+            <?php
+            if (isset($_SESSION['token'])) {
+
+                include './config.php';
+                $user_id = $_SESSION['user_id'];
+                $checkCart = "SELECT products.id AS product_id,products.image,products.name,products.price,cart.extras FROM cart JOIN products ON cart.product_id = products.id WHERE user_id = $user_id";
+                $result3 = mysqli_query($connection, $checkCart);
+                if ($result3->num_rows > 0) {
+                    echo "<div class='d-flex mt-5 w-100 gap-3 align-items-center justify-content-between text-danger fw-semibold'>
                 <h5>Total</h5>
-                <h5>Rs. 3,547</h5>
-            </div>
+                <h5>Rs. <span class='total_price'>3,547</span></h5>
+            </div>";
+                    foreach ($result3 as $item3) {
+                        ?>
 
-            <div class="bg-white w-100 p-4 rounded-md card border-0 shadow-lg">
+      <!-- agr data ha to to ye neche wala -->
+       
+            
+
+            <div class="bg-white my-2 w-100 p-4 rounded-md card border-0 shadow-lg">
                 <div class="d-flex w-100 gap-3">
-                    <img src="" alt="">
+                    <img width="100px" height="60px" src="./category_images/<?php echo $item3['image'] ?>" alt="">
                     <div class="w-100">
-                        <h5>Ramadan Deal 5</h5>
-                        <div class="d-flex justify-content-between text-secondary">
-                            <h5>Rango Next</h5>
-                            <h5>Rs. 0</h5>
+                        <h6>
+                            <?php echo $item3['name'] ?>
+                        </h6>
+                        <div style="font-size: 0.8rem;" class="d-flex justify-content-between text-secondary">
+                            <h5 class="text-sm"><?php echo $item3['extras'] ?></h5>
+                            <h5 class="text-sm">Rs. 0</h5>
                         </div>
                         <div class="text-end text-danger">
-                            Rs. 2,749
+                            Rs. <span class="single_price"><?php echo $item3['price'] ?></span>
                         </div>
                         <div class="d-flex justify-content-end gap-1 align-items-center">
                             <i style="height: 30px;width:30px;"
@@ -440,6 +454,32 @@ session_start();
                     </div>
                 </div>
             </div>
+<?php
+                    }
+                } else {
+                    ?>
+
+<img src="https://cheezious.com/_next/static/media/emptycart.e7858caa.svg" width="100px" alt="">
+            <h5>YOUR CART IS EMPTY</h5>
+            <h6>Go ahead and explore top categories </h6>
+<?php
+                }
+            } else {
+                ?>
+
+<img src="https://cheezious.com/_next/static/media/emptycart.e7858caa.svg" width="100px" alt="">
+            <h5>YOUR CART IS EMPTY</h5>
+            <h6>Go ahead and explore top categories </h6>
+<?php }?>
+
+
+            
+
+
+
+
+
+          
 
 
 
@@ -570,6 +610,21 @@ session_start();
     closeBtn.addEventListener('click', () => {
         cartPopUp.classList.add('d-none')
     })
+
+
+    let total = document.querySelector('.total_price');
+    let single_price = document.querySelectorAll('.single_price')
+
+    let sum = 0
+
+    single_price.forEach((item,index)=>{
+        let converted = Number(item.innerHTML)
+        sum += converted
+    })
+
+    total.innerHTML = sum
+
+
     </script>
 
 </body>
